@@ -1,0 +1,1 @@
+- **variable name**: a sequence of letters and digits that begins with a letter
