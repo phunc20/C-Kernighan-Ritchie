@@ -1,0 +1,1 @@
+- A character written btw single quotes represents an **integer** value equal to the **numerical value of the character** in the **machine's character set**. This is called a **_character constant_**, which is just another way to write a **small integer**. (p.19, 1.5.3)
