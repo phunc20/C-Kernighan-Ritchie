@@ -461,6 +461,50 @@ main() {
 [phunc20@homography-x220t 05-io]$
 ```
 
+## `wc`
+```bash
+[phunc20@homography-x220t 05-io]$ gcc 15_wc.c
+[phunc20@homography-x220t 05-io]$ ./a.out
+a person w/o taste is someone
+tasteless       . Oops,
+I've missed a period
+. Again..
+nl = 3
+nw = 15
+nc = 84
+[phunc20@homography-x220t 05-io]$ cat 15_wc.c
+#include <stdio.h>
+
+#define IN 1
+#define OUT 0
+
+int main() {
+  int c, nl, nw, nc, state;
+
+  state = OUT;
+  nl = nw = nc = 0; // Note how this is convenient.
+  while ((c = getchar()) != EOF) {
+    ++nc;
+    if (c == '\n')
+      ++nl;
+    if (c == ' ' || c == '\n' || c == '\t') {
+      // Note that the or in C is the same as in bash
+      state = OUT;
+    }
+    else if (state == OUT) {
+      state = IN;
+      ++nw;
+    }
+  }
+  putchar('\n');
+  printf("nl = %d\n", nl);
+  printf("nw = %d\n", nw);
+  printf("nc = %d\n", nc);
+}
+[phunc20@homography-x220t 05-io]$
+```
+
+
 ## QnA
 01. `11_for_w_nothing.c` why its behaviour was like that when there was no semicolon (`;`)?
   - **R1** Recall that C language itself does not require you to indent. So **omitting** the semicolon simply equals

@@ -1,1 +1,7 @@
-**/a.out
+*
+!*.*
+!*/
+# The above 3 lines are there to ignore files w/o extension.
+# N.B. Future ignore patterns should be put after these 3 lines.
+
+a.out
