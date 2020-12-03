@@ -1,0 +1,33 @@
+# Bắt Đầu từ Cuối Năm 2019    				 	
+Tôi từ chỉ sử dụng duy nhất một Linux distro là Ubuntu sang Arch Linux (do vô tình nhìn thấy [một bạn thủ vị tên Luke Smith](https://www.youtube.com/channel/UC2eYFnH61tmytImy1mTYvhA) trên youtube). Vài tháng kế từ thời điểm đó, là khoản thời gian Linux của mình tiến bộ nhanh nhất trong suất mấy năm qua.    																		       
+
+Repo này nằm mục đích						     
+01. giúp cho bản thân mình kiểm lại những files quan trọng mình đã bỏ thời gian tạo ra						     
+02. chia sẻ với cộng dồng sử dụng Linux, giúp cho việc sử dụng Linux đơn giản và thoải mãi hơn						     
+03. không những Arch Linux, mà còn những distros khác mà mình từng tiếp xúc hoặc đang tiếp xúc, mình đều sẽ chia sẻ ở đây (Vì ý tưởng chia sẻ này đến sau việc mình ghi note, nên mới đầu chưa kịp push lên hết tất cả note của mình lên)						     
+						     
+Nếu cách đây 1 hoặc 2 năm nếu mà mình gặp được người giống như mình bây giờ để chỉ cho mình (hoặc là gặp được bạn như Luke Smith), thì mình sẽ rất vui vì được tiến bộ nhanh chóng hơn và appreciate Linux toàn diện hơn. Hy vọng trong số người đọc/sử dụng repo này cũng sẽ có người cảm thấy niệm vui đó.						     
+
+## My feelings towards those few distros I come to use                     
+My point of view or my feelings below are somewhat biased by the fact that       
+01. I was a former math major converted to <b>scientific programming / data science / machine learning</b>        	        			    
+02. I have been using <code><b>python</b></code> as the main programming language for 3 years      		     
+                                                	
+So here is how I feel about each distribution          
+- <b>arch linux</b>             
+- <b>blackarch linux</b>: can take long to install, due to a default installation of too many packages. One could have chosen to install less, but that'd be meaningless to have chosen <b>blackacrh linux</b> over <b>arch linux</b> or <b>artix</b> in the first place.              		
+- <b>artix</b>			
+- <b>manjaro</b>						     
+- <b>parabola</b>						     
+- <b>gentoo</b>						     
+- <b>ubuntu</b>						     
+- <b>trisquel</b>						     
+- <b>openBSD</b>						     
+
+## My feelings towards various thinkpads I come to use
+- <b>x220</b>
+- <b>x200</b>
+    - Cannot `pip install tensorflow` with versions higher than **`1.5`** or sth like that. (Probably because the binaries for this kind of machine structure is not built.)
+    - Two workarounds for the above issue: i) build tf from source; ii) use `miniconda` (they seem to have built the binary)
+- <b>x60</b>
+    - Forget about using tensorflow. PyTorch seems to be installable. (In any case, machines this old would probably take long to run these frameworks.)
