@@ -5,6 +5,7 @@
 - Stopped at Exercise 1-18   p.31  (2020/12/02 23h40)
 - Stopped at Section 1.10    p.31  (2020/12/03 16h22)
 - Finished   Chapter 1       p.34  (2020/12/03 17h24)
+- Finished   Preface 2       p.X   (2020/12/04 17h00)
 
 
 ## Skipped exercises

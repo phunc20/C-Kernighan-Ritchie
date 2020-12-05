@@ -1,49 +1,59 @@
 
 
 ```bash
-[phunc20@homography-x220t ch05]$ cat xyz.c
+[phunc20@homography-x220t ch05]$ cat 01_xyz.c
 #include <stdio.h>
 
 main()
 {
-        // Try comment out each of the following to see diff code effect
-        int x = 1, y =2, z[10];
-        int *ip;  // ip is a pointer to int
-        printf("&x = %p, &y = %p, z = %p, ip = %p\n", &x, &y, z, ip);
-        printf("x = %d, y = %d, z[0] = %d, *ip = %d (z[1] = %d, ..., z[9] = %d)\n\n", x, y, z[0], *ip, z[1], z[9]);
+  int x = 1, y =2, z[10];
+  int *ip;  // ip is a pointer to int
+  printf("int x = 1, y =2, z[10];\n");
+  printf("int *ip;\n");
+  printf("&x = %p, &y = %p, z = %p, ip = %p\n", &x, &y, z, ip);
+  printf("x = %d, y = %d, z[0] = %d, *ip = %d (z[1] = %d, ..., z[9] = %d)\n\n", x, y, z[0], *ip, z[1], z[9]);
 
-        ip = &x;
-        printf("&x = %p, &y = %p, z = %p, ip = %p\n", &x, &y, z, ip);
-        printf("x = %d, y = %d, z[0] = %d, *ip = %d (z[1] = %d, ..., z[9] = %d)\n\n", x, y, z[0], *ip, z[1], z[9]);
+  ip = &x;
+  printf("ip = &x;\n");
+  printf("&x = %p, &y = %p, z = %p, ip = %p\n", &x, &y, z, ip);
+  printf("x = %d, y = %d, z[0] = %d, *ip = %d (z[1] = %d, ..., z[9] = %d)\n\n", x, y, z[0], *ip, z[1], z[9]);
 
-        y = *ip;
-        printf("&x = %p, &y = %p, z = %p, ip = %p\n", &x, &y, z, ip);
-        printf("x = %d, y = %d, z[0] = %d, *ip = %d (z[1] = %d, ..., z[9] = %d)\n\n", x, y, z[0], *ip, z[1], z[9]);
+  y = *ip;
+  printf("y = *ip;\n");
+  printf("&x = %p, &y = %p, z = %p, ip = %p\n", &x, &y, z, ip);
+  printf("x = %d, y = %d, z[0] = %d, *ip = %d (z[1] = %d, ..., z[9] = %d)\n\n", x, y, z[0], *ip, z[1], z[9]);
 
-        *ip = 0;
-        printf("&x = %p, &y = %p, z = %p, ip = %p\n", &x, &y, z, ip);
-        printf("x = %d, y = %d, z[0] = %d, *ip = %d (z[1] = %d, ..., z[9] = %d)\n\n", x, y, z[0], *ip, z[1], z[9]);
+  *ip = 0;
+  printf("*ip = 0;\n");
+  printf("&x = %p, &y = %p, z = %p, ip = %p\n", &x, &y, z, ip);
+  printf("x = %d, y = %d, z[0] = %d, *ip = %d (z[1] = %d, ..., z[9] = %d)\n\n", x, y, z[0], *ip, z[1], z[9]);
 
-        ip = &z[0];
-        printf("&x = %p, &y = %p, z = %p, ip = %p\n", &x, &y, z, ip);
-        printf("x = %d, y = %d, z[0] = %d, *ip = %d (z[1] = %d, ..., z[9] = %d)\n\n", x, y, z[0], *ip, z[1], z[9]);
+  ip = &z[0];
+  printf("ip = &z[0];\n");
+  printf("&x = %p, &y = %p, z = %p, ip = %p\n", &x, &y, z, ip);
+  printf("x = %d, y = %d, z[0] = %d, *ip = %d (z[1] = %d, ..., z[9] = %d)\n\n", x, y, z[0], *ip, z[1], z[9]);
 }
-[phunc20@homography-x220t ch05]$ ./xyz
-&x = 0x7ffd8cda15d0, &y = 0x7ffd8cda15d4, z = 0x7ffd8cda15e0, ip = 0x556d7855a3dd
-x = 1, y = 2, z[0] = 0, *ip = 29590344 (z[1] = 0, ..., z[9] = 32765)
+[phunc20@homography-x220t 05-pointers_and_arrays]$ ./a.out
+int x = 1, y =2, z[10];
+int *ip;
+&x = 0x7fffa1d119d0, &y = 0x7fffa1d119d4, z = 0x7fffa1d119e0, ip = 0x562de2e8242d
+x = 1, y = 2, z[0] = 0, *ip = 29590344 (z[1] = 0, ..., z[9] = 32767)
 
-&x = 0x7ffd8cda15d0, &y = 0x7ffd8cda15d4, z = 0x7ffd8cda15e0, ip = 0x7ffd8cda15d0
-x = 1, y = 2, z[0] = 0, *ip = 1 (z[1] = 0, ..., z[9] = 32765)
+ip = &x;
+&x = 0x7fffa1d119d0, &y = 0x7fffa1d119d4, z = 0x7fffa1d119e0, ip = 0x7fffa1d119d0
+x = 1, y = 2, z[0] = 0, *ip = 1 (z[1] = 0, ..., z[9] = 32767)
 
-&x = 0x7ffd8cda15d0, &y = 0x7ffd8cda15d4, z = 0x7ffd8cda15e0, ip = 0x7ffd8cda15d0
-x = 1, y = 1, z[0] = 0, *ip = 1 (z[1] = 0, ..., z[9] = 32765)
+y = *ip;
+&x = 0x7fffa1d119d0, &y = 0x7fffa1d119d4, z = 0x7fffa1d119e0, ip = 0x7fffa1d119d0
+x = 1, y = 1, z[0] = 0, *ip = 1 (z[1] = 0, ..., z[9] = 32767)
 
-&x = 0x7ffd8cda15d0, &y = 0x7ffd8cda15d4, z = 0x7ffd8cda15e0, ip = 0x7ffd8cda15d0
-x = 0, y = 1, z[0] = 0, *ip = 0 (z[1] = 0, ..., z[9] = 32765)
+*ip = 0;
+&x = 0x7fffa1d119d0, &y = 0x7fffa1d119d4, z = 0x7fffa1d119e0, ip = 0x7fffa1d119d0
+x = 0, y = 1, z[0] = 0, *ip = 0 (z[1] = 0, ..., z[9] = 32767)
 
-&x = 0x7ffd8cda15d0, &y = 0x7ffd8cda15d4, z = 0x7ffd8cda15e0, ip = 0x7ffd8cda15e0
-x = 0, y = 1, z[0] = 0, *ip = 0 (z[1] = 0, ..., z[9] = 32765)
-
+ip = &z[0];
+&x = 0x7fffa1d119d0, &y = 0x7fffa1d119d4, z = 0x7fffa1d119e0, ip = 0x7fffa1d119e0
+x = 0, y = 1, z[0] = 0, *ip = 0 (z[1] = 0, ..., z[9] = 32767)
 [phunc20@homography-x220t ch05]$
 ```
 
