@@ -6,6 +6,10 @@
   - Usually, C is **call by value**, **but when it comes to an array**, when it is an argument of some function, it is **the address of the first element** of the array which is being passed into the function. And consequently, an array **can be modified** inside a function.
   - `\0` (_**null character**_, whose value equals `0`) marks the end of a string.
 
+02. types, operators and expressions
+  - The names of variables and symbolic constants are made up of letters and digits; the first character must be a letter. The underscore `_`  counts as a letter. Don't begin variable names with underscore, however, since library routines often use such names. Traditional C practice is to use lower case for variable names, and all upper case for symbolic constants.
+
+
 05. pointers and arrays
   - The address operator `&` only applies to objects in memory: **variables** and **array elements**. It cannot be applied to expressions, constants, or `register` variables.
   - A pointer is constrained to point to a particular kind of object: every pointer points to a specific data type. (There is one exception: a "pointer to `void`" is used to hold any type of pointer but cannot dereferenced by itself. (cf. more on this in Section 5.11.)
