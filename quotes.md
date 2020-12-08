@@ -8,7 +8,14 @@
 
 02. types, operators and expressions
   - The names of variables and symbolic constants are made up of letters and digits; the first character must be a letter. The underscore `_`  counts as a letter. Don't begin variable names with underscore, however, since library routines often use such names. Traditional C practice is to use lower case for variable names, and all upper case for symbolic constants.
-
+  - Names in diff enumerations must be distinct. Values need not be distinct in the same enumeration.
+  ```c
+  enum escapes { BELL = '\a', BACKSPACE = '\b', TAB = '\t',
+                 NEWLINE = '\n', VTAB = '\v', RETURN = '\r' };
+  enum months { JAN = 1, FEB, MAR, APR, MAY, JUN,
+                JUL, AUG, SEP, OCT, NOV, DEC };
+                      /* FEB is 2, MAR is 3, etc. */
+  ```
 
 05. pointers and arrays
   - The address operator `&` only applies to objects in memory: **variables** and **array elements**. It cannot be applied to expressions, constants, or `register` variables.
