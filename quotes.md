@@ -16,6 +16,8 @@
                 JUL, AUG, SEP, OCT, NOV, DEC };
                       /* FEB is 2, MAR is 3, etc. */
   ```
+  - The `%` operator cannot be applied to `float` or `double`
+  - **precedence**: (binary `+` and `-`) $<$ (binary `*`, `/` and `%`) $<$ (unary `+` and `-`)
 
 05. pointers and arrays
   - The address operator `&` only applies to objects in memory: **variables** and **array elements**. It cannot be applied to expressions, constants, or `register` variables.

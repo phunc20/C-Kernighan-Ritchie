@@ -314,6 +314,31 @@ tnemele ht-)k - nel( dna ht-j eht paws ew emit hcaE //  $
 [phunc20@homography-x220t 09-char_array]$
 ```
 
+## Not specifying the length
+```bash
+[phunc20@homography-x220t 09-char_array]$ gcc 12_char_not_length.c
+[phunc20@homography-x220t 09-char_array]$ ./a.out
+^warning: $
+msg[9] = \0
+strlen(msg) = 9
+[phunc20@homography-x220t 09-char_array]$ cat 12_char_not_length.c
+#include <stdio.h>
+#include <string.h>
 
+int main() {
+  char msg[] = "warning: ";
+  int i = 0;
+  putchar('^');
+  while (msg[i] != '\0') {
+    putchar(msg[i]);
+    i += 1;
+  }
+  putchar('$');
+  printf("\nmsg[%d] = \\0\n", i);
+  printf("strlen(msg) = %d\n", strlen(msg));
+  return 0;
+}
+[phunc20@homography-x220t 09-char_array]$
+```
 
 

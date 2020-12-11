@@ -8,6 +8,7 @@
 - Finished   Preface 2       p.X   (2020/12/04 17h00)
 - Stopped at Section 2.3     p.37  (2020/12/07 15h48)
 - Stopped at Section 2.4     p.40  (2020/12/09 00h35)
+- Stopped at Section 2.6     p.41  (2020/12/11 19h35)
 
 
 ## Skipped exercises
