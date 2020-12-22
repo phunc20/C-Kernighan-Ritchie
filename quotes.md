@@ -18,6 +18,14 @@
   ```
   - The `%` operator cannot be applied to `float` or `double`
   - **precedence**: (binary `+` and `-`) $<$ (binary `*`, `/` and `%`) $<$ (unary `+` and `-`)
+  - **precedence** (relational operator): ( `>`, `>=`, `<`, `<=`) $>$ (`==` and `!=`) $>$ (arithmetic `+-*/%`)
+  - **precedence** (logical operator): `&&` $>$ `||`
+    - (relatioinal and equality operators) $>$ (`&&` and `||`)
+    - `!=` $>$ `=` (i.e. assignment), e.g. `(c = getchar()) != '\n'`
+  - Expressions connected by `&&` or `||` are evaluated left to right, and evaluation stops as soon as the truth or falsehood of the result is known.
+  - In C, `0` means **false** and `1` means **true**
+  - unary negation operator `!` converts non zero into `0` and zero into `1`
+  - In `f + i`, where `f` and `i` are of type `int` and `float`, respectively, `i` is **first converted to a `float`** before the actual addition takes place.
 
 05. pointers and arrays
   - The address operator `&` only applies to objects in memory: **variables** and **array elements**. It cannot be applied to expressions, constants, or `register` variables.
