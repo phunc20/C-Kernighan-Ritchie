@@ -10,6 +10,8 @@
 - Stopped at Section 2.4     p.40  (2020/12/09 00h35)
 - Stopped at Section 2.6     p.41  (2020/12/11 19h35)
 - Stopped at Section 2.7     p.44  (2020/12/22 18h56)
+- Stopped at Section 2.7     p.46  (2020/12/25 00h56)
+- Stopped at Section 2.8     p.46  (2020/12/25 11h30)
 
 
 ## Skipped exercises

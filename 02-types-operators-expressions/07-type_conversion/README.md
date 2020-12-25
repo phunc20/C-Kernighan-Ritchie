@@ -150,3 +150,63 @@ In C language:
 -2.718280 represents true.
 0.000000 represents false.
 ```
+
+## `int` and `char`
+It seems that `pow()` function returns `double` and conversion from `double` to `int` just stuck at the highest value when overflow is encountered.
+```bash
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/07-type_conversion ❯❯❯ gcc 13_int_char.c
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/07-type_conversion ❯❯❯ ./a.out
+sizeof(i) = 4
+sizeof(c) = 1
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/07-type_conversion ❯❯❯ gcc 14_int_char.c
+14_int_char.c: In function ‘main’:
+14_int_char.c:5:11: warning: overflow in conversion from ‘double’ to ‘int’ changes value from ‘2.147483648e+9’ to ‘2147483647’ [-Woverflow]
+    5 |   int i = pow(2, 31);
+      |           ^~~
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/07-type_conversion ❯❯❯ ./a.out
+int i = pow(2, 31) gives
+i = 2147483647
+char c = pow(2, 7) - 1 gives
+c = ~ (%c) = 126 (%d)
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/07-type_conversion ❯❯❯ python -c "print(2**31)"
+2147483648
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/07-type_conversion ❯❯❯ gcc 14_int_char.c -lm
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/07-type_conversion ❯❯❯ ./a.out
+int i = pow(2, 31) gives
+i = 2147483647
+char c = pow(2, 7) - 1 gives
+c = ~ (%c) = 126 (%d)
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/07-type_conversion ❯❯❯ gcc 15_int_char.c
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/07-type_conversion ❯❯❯ ./a.out
+int i = pow(2, 31) - 1 gives
+i = 2147483647
+char c = pow(2, 7) - 1 gives
+c = ~ (%c) = 126 (%d)
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/07-type_conversion ❯❯❯ gcc 16_int_char.c
+16_int_char.c: In function ‘main’:
+16_int_char.c:6:12: warning: overflow in conversion from ‘double’ to ‘char’ changes value from ‘1.28e+2’ to ‘127’ [-Woverflow]
+    6 |   char c = pow(2, 7);
+      |            ^~~
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/07-type_conversion ❯❯❯ ./a.out
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/07-type_conversion ❯❯❯ gcc 16_int_char.c
+16_int_char.c: In function ‘main’:
+16_int_char.c:6:12: warning: overflow in conversion from ‘double’ to ‘char’ changes value from ‘1.28e+2’ to ‘127’ [-Woverflow]
+    6 |   char c = pow(2, 7);
+      |            ^~~
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/07-type_conversion ❯❯❯ ./a.out
+int i = pow(2, 31) - 1 gives
+i = 2147483647
+char c = pow(2, 7) gives
+c =  (%c) = 127 (%d)
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/07-type_conversion ❯❯❯
+```
+
+## _Cast_ on A Variable instead of on An Expression Also Works
+```bash
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/07-type_conversion ❯❯❯ gcc 21_cast_var.c
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/07-type_conversion ❯❯❯ ./a.out
+int n = 10;
+printf("%f\n", (double) n); gives 10.000000
+printf("%d\n", n); gives 10
+printf("%f\n", n); gives 10.000000
+```
