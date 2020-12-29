@@ -26,6 +26,7 @@
   - In C, `0` means **false** and `1` means **true**
   - unary negation operator `!` converts non zero into `0` and zero into `1`
   - In `f + i`, where `f` and `i` are of type `int` and `float`, respectively, `i` is **first converted to a `float`** before the actual addition takes place.
+  - `strcat(s, t)` concatenates the string `t` to the end of the string `s`. `strcat` assumes that there is enough space in `s` to hold the combination. The returned value of `strcat` is a pointer to the resulting string.
 
 05. pointers and arrays
   - The address operator `&` only applies to objects in memory: **variables** and **array elements**. It cannot be applied to expressions, constants, or `register` variables.
