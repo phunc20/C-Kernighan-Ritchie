@@ -27,6 +27,22 @@
   - unary negation operator `!` converts non zero into `0` and zero into `1`
   - In `f + i`, where `f` and `i` are of type `int` and `float`, respectively, `i` is **first converted to a `float`** before the actual addition takes place.
   - `strcat(s, t)` concatenates the string `t` to the end of the string `s`. `strcat` assumes that there is enough space in `s` to hold the combination. The returned value of `strcat` is a pointer to the resulting string.
+  - include header files from parent dir:
+  ```bash
+  ~/.../02-types-operators-expressions/09-bitwise_operators/exo-02-06 ❯❯❯ gcc test1.c setbits.c ../binary.c
+  ~/.../02-types-operators-expressions/09-bitwise_operators/exo-02-06 ❯❯❯ ./a.out
+  SET x = (607)_8 = (110000111)_2
+  GET x = (607)_8 = (110000111)_2
+  SET y = (5017)_8 = (101000001111)_2
+  GET y = (5017)_8 = (101000001111)_2
+  setbits(391,6,4,2575) = (777)_8 = (111111111)_2
+  Expected result: (111111111)_2, i.e. (777)_8
+  ~/.../02-types-operators-expressions/09-bitwise_operators/exo-02-06 ❯❯❯ grep include test1.c
+  #include <stdio.h>
+  #include "setbits.h"
+  #include "../binary.h"
+  ~/.../02-types-operators-expressions/09-bitwise_operators/exo-02-06 ❯❯❯
+  ```
 
 05. pointers and arrays
   - The address operator `&` only applies to objects in memory: **variables** and **array elements**. It cannot be applied to expressions, constants, or `register` variables.

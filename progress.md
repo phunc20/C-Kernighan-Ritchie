@@ -14,8 +14,10 @@
 - Stopped at Section 2.8     p.46  (2020/12/25 11h30)
 - Stopped at Exo 2-4         p.48  (2020/12/25 11h30)
 - Stopped at Exo 2-6         p.49  (2021/01/02 10h50)
+- Stopped at Exo 2-7         p.49  (2021/01/02 17h00)
 
 
 ## Skipped exercises
 - 1-16: Dunno what it means
 - 1-20 ~ 1-24: Skipped due to temporary lack of time
+- 2-7 ~ 2-8
