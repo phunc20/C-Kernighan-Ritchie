@@ -13,6 +13,7 @@
 - Stopped at Section 2.7     p.46  (2020/12/25 00h56)
 - Stopped at Section 2.8     p.46  (2020/12/25 11h30)
 - Stopped at Exo 2-4         p.48  (2020/12/25 11h30)
+- Stopped at Exo 2-6         p.49  (2021/01/02 10h50)
 
 
 ## Skipped exercises
