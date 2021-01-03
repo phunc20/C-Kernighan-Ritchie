@@ -43,6 +43,12 @@
   #include "../binary.h"
   ~/.../02-types-operators-expressions/09-bitwise_operators/exo-02-06 ❯❯❯
   ```
+  - Most binary operators can form _assignment operator_ like `a -= 3`. To list a few of them: `+ - * / % << >> & ^ |`, e.g.
+    - `expr1 op= expr2` is equiv. to `expr1 = (expr1) op (expr2)`
+    - Consequently, `x *= y+1` means `x = x * (y+1)` and **not** `x = x * y + 1`
+  - Assignment operators' raison d'etre 
+    - For complicated expression like `yyval[yypv[p3+p4] + yypv[p1+p2]] += 2`, assignment operator prevents the reader from painstaking reading of the code
+    - An assignment operator may even help a compiler to produce efficient code
 
 05. pointers and arrays
   - The address operator `&` only applies to objects in memory: **variables** and **array elements**. It cannot be applied to expressions, constants, or `register` variables.

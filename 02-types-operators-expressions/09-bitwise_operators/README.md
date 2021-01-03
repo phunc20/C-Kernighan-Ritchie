@@ -114,6 +114,77 @@ int main(int argc, char **argv) {
 ```
 
 
+## `+, -`'s precedence is greater than `<<, >>`
+```bash
+a      = 1 << 31 - 1;
+a      = 1073741824 = (10000000000)_8
+a >> 1 = 536870912 = (4000000000)_8
+
+a      = 1 << 30;
+a      = 1073741824 = (10000000000)_8
+a >> 1 = 536870912 = (4000000000)_8
+
+a      = (int) pow(2, 31) - 1;
+a      = 2147483646 = (17777777776)_8
+a >> 1 = 1073741823 = (7777777777)_8
+
+a      = 1 << 32 - 1;
+a      = -2147483648 = (20000000000)_8
+a >> 1 = -1073741824 = (30000000000)_8
+
+a      = (1 << 31) - 1;
+a      = 2147483647 = (17777777777)_8
+a >> 1 = 1073741823 = (7777777777)_8
+```
+
+
+## Overflow
+Overflow happens only at the crossing at the **boundary** of the data type. That is,
+- when `max + 1` is encountered
+- or when `min - 1` is encountered
+
+For example,
+```bash
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/09-bitwise_operators ❯❯❯ gcc aj_overflow.c -lm
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/09-bitwise_operators ❯❯❯ ./a.out
+a      = (1 << 31);
+a      = -2147483648 = (20000000000)_8
+a >> 1 = -1073741824 = (30000000000)_8
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/09-bitwise_operators ❯❯❯ gcc ak_overflow.c -lm
+ak_overflow.c: In function ‘main’:
+ak_overflow.c:6:3: warning: integer overflow in expression ‘-2147483648 - 1’ of type ‘int’ results in ‘2147483647’
+[-Woverflow]
+    6 |   a = (1 << 31) - 1;
+      |   ^
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/09-bitwise_operators ❯❯❯ ./a.out
+a      = (1 << 31) - 1;
+a      = 2147483647 = (17777777777)_8
+a >> 1 = 1073741823 = (7777777777)_8
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/09-bitwise_operators ❯❯❯
+```
+
+## Right shift for negative integers
+It seems that right shift only halfs negative numbers.
+```bash
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/09-bitwise_operators ❯❯❯ gcc al_sign_bit_cont.c -lm
+al_sign_bit_cont.c: In function ‘main’:
+al_sign_bit_cont.c:22:3: warning: integer overflow in expression ‘-2147483648 - 1’ of type ‘int’ results in ‘2147483647’ [-Woverflow]
+   22 |   a = (1 << 31) - 1; // the largest positive number
+      |   ^
+~/.../C-Kernighan-Ritchie/02-types-operators-expressions/09-bitwise_operators ❯❯❯ ./a.out
+a      = 1 << 31;
+a      = -2147483648 = (20000000000)_8
+a >> 1 = -1073741824 = (30000000000)_8
+
+a      = (1 << 31) + 1;
+a      = -2147483647 = (20000000001)_8
+a >> 1 = -1073741824 = (30000000000)_8
+
+a      = (1 << 31) - 1;
+a      = 2147483647 = (17777777777)_8
+a >> 1 = 1073741823 = (7777777777)_8
+```
+
 ## Todo
 01. Try unsigned int left shift (`<<`) overflow
 02. Try right shifting (`>>`) a signed integer
