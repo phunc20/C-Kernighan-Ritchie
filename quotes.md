@@ -49,6 +49,19 @@
   - Assignment operators' raison d'etre 
     - For complicated expression like `yyval[yypv[p3+p4] + yypv[p1+p2]] += 2`, assignment operator prevents the reader from painstaking reading of the code
     - An assignment operator may even help a compiler to produce efficient code
+  - If any `expression` is true, the `statement` associated with it is executed, and this terminates the whole chain
+    ```
+    if (expression)
+      statement
+    else if (expression)
+      statement
+    else if (expression)
+      statement
+    else if (expression)
+      statement
+    else
+      statement
+    ```
 
 05. pointers and arrays
   - The address operator `&` only applies to objects in memory: **variables** and **array elements**. It cannot be applied to expressions, constants, or `register` variables.
