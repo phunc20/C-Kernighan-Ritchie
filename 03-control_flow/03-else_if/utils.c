@@ -108,9 +108,30 @@ int exo_binsearch2(int x, int v[], int n) {
     return -1;
 }
 
-int *randint(int len) {
-}
+//int *randint(int len) {
+//}
 
+//int *randint_isort(int len) {
+//void randint_isort(long int A[], int len) {
+void randint_isort(int A[], int len) {
+  //long int substractant = RAND_MAX >> 1;
+  int substractant = RAND_MAX >> 1;
+  srand(time(NULL));
+  //long int A[len];
+  A[0] = rand() - substractant;
+  int key, i;
+  for (int j=1; j<len; ++j) {
+    key = rand() - substractant;
+    // Insert key into the sorted seq A[0..j-1]
+    i = j-1;
+    while (i >= 0 && A[i] > key) {
+      A[i+1] = A[i];
+      --i;
+    }
+    A[i+1] = key;
+  }
+  //return A;
+}
 
 
 
