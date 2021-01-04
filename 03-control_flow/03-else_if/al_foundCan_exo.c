@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
 #include "utils.h"
 
 int main(int argc, char **argv) {
@@ -13,12 +15,15 @@ int main(int argc, char **argv) {
   //for (int i=0; i<len; ++i) {
   //  printf("%ld%s", A[i], (i == len-1) ? "}\n" : ", ");
   //}
-  int x = A[len-1];
+  int index;
+  //index = len - 1;
+  index = rand() % len;
+  int x = A[index];
   //printf("v = [");
   //for (int i=0; i<n; ++i)
   //  printf("%d%s", v[i], (i == n-1) ? "]\n" : ", ");
   printf("len = %d\n", len);
-  printf("x = %d\n", x);
+  printf("x = A[%d]\n", index);
   printf("exo_binsearch2(x, A, len) = %d\n", exo_binsearch2(x, A, len));
   return 0;
 }
