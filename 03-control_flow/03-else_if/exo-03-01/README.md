@@ -1,3 +1,25 @@
+## It turned out that I cannot find a satisfatory answer alone
+so I went on the Internet to find what others have to say about it. Here below is two sources that I found helpful
+- [https://clc-wiki.net/wiki/K&R2_solutions:Chapter_3:Exercise_1](https://clc-wiki.net/wiki/K&R2_solutions:Chapter_3:Exercise_1)
+- [https://codereview.stackexchange.com/questions/6152/binary-search-optimization-kernighan-ritchie-3-1](https://codereview.stackexchange.com/questions/6152/binary-search-optimization-kernighan-ritchie-3-1)
+
+## Comment on the solution on StackExchange
+```c
+while (low < high) {
+  mid = (low + high + 1) / 2;
+  if (x < v[mid]) high = mid - 1;
+  else low = mid;
+}
+```
+- Note that in this implementation not only `high` is decreasing,  but `low` is increasing as well, effectively shrinking the interval `[low .. high]` thru each iteration
+  - The reason why `low` is strictly increasing is thru the assignment `low = mid` and `mid = (low + high + 1) / 2`: Since inside the while loop, `low < high`, that is, `high >= low + 1`, we know that `mid = (low + high + 1) / 2 >= (2*low + 2) / 2 == low + 1`
+- What's the order btw `low` and `high` upon exiting the while loop? Ans: **`low == high`**. This can be seen in two cases:
+  01. `high = mid - 1` from the last iteration: Since `mid >= low + 1` as discussed above, we see that `high >= low`. The only possibility to invalidate `low  < high` is thus `low == high`.
+  02. `low  = mid` from the last iteration: Since `mid = (low + high + 1) / 2` and `low < high` (or equiv. `high >= low + 1`) inside the loop, we can see that `mid <= (high + high) / 2 == high`.
+
+So we are guaranteed to exit the loop. Besides, when exiting the loop we have `low == high` and `x == v[low]` if ever `x` is figured in `v`. That's why the function is finished with `return (x == v[low]) ? v[low] : -1;`
+
+
 ## FoundNot
 
 ```bash

@@ -133,6 +133,21 @@ void randint_isort(int A[], int len) {
   //return A;
 }
 
+/* cf. https://codereview.stackexchange.com/questions/6152/binary-search-optimization-kernighan-ritchie-3-1 */
+int stackexchange_binsearch(int x, int v[], int n) {
+  int low, high, mid;
 
+  low = 0;
+  high = n-1;
+  while (low < high) {
+    mid = (low+high+1) / 2;
+    if (x < v[mid]) high = mid - 1;
+    else low = mid;
+  }
+  /* When will we exit the loop?
+   * Cf. README.md
+   */
+  return (x == v[low]) ? v[low] : -1;
+}
 
 
