@@ -16,6 +16,7 @@
 - Stopped at Exo 2-6         p.49  (2021/01/02 10h50)
 - Stopped at Exo 2-7         p.49  (2021/01/02 17h00)
 - Stopped at Section 3.1     p.55  (2021/01/03 18h00)
+- Stopped at Section 3.5     p.61  (2021/01/06 22h00)
 
 
 ## Skipped exercises

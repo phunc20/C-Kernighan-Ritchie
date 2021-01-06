@@ -71,6 +71,19 @@
     default: statements
   }
   ```
+  - The following two general for loop and while loop are equiv. The `expr1`, `expr2` and `expr3` can all be omitted (so to make an infinite loop using `for`: **`for (;;)`**)
+  ```c
+  /* a general for loop */
+  for (expr1; expr2; expr3)
+    statement
+  /* a general while loop */
+  expr1;
+  while (expr2) {
+    statement
+    expr3;
+  }
+  ```
+  - `for (i=0; expr; ++i)`. When exiting a for loop like this, `i` will retain its last value when still inside the loop.
 
 05. pointers and arrays
   - The address operator `&` only applies to objects in memory: **variables** and **array elements**. It cannot be applied to expressions, constants, or `register` variables.
