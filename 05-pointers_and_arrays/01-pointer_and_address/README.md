@@ -1,3 +1,27 @@
+## length of an array
+```bash
+~/.../C-Kernighan-Ritchie/05-pointers_and_arrays/01-pointer_and_address ❯❯❯ gcc 04_length.c
+~/.../C-Kernighan-Ritchie/05-pointers_and_arrays/01-pointer_and_address ❯❯❯ ./04
+-bash: ./04: No such file or directory
+~/.../C-Kernighan-Ritchie/05-pointers_and_arrays/01-pointer_and_address ❯❯❯ ./a.out
+int a1[] = {1,2,3};
+int a2[3] = {1,2,3};
+int a3[3];
+int *pa1;
+int *pa2 = &a2[0];
+
+sizeof(a1)/sizeof(int) = 3
+sizeof(a2)/sizeof(int) = 3
+sizeof(a3)/sizeof(int) = 3
+sizeof(pa1)/sizeof(int) = 2
+sizeof(pa2)/sizeof(int) = 2
+sizeof(*pa1)/sizeof(int) = 1
+sizeof(*pa2)/sizeof(int) = 1
+~/.../C-Kernighan-Ritchie/05-pointers_and_arrays/01-pointer_and_address ❯❯❯
+```
+
+
+
 
 
 ```bash

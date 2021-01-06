@@ -62,6 +62,15 @@
     else
       statement
     ```
+03. control flow
+  - `switch`. All case expressions must be diff. The case labeled `default` is executed if none of the other cases are satisfied. A `default` is optinal; if it isn't there and if none of the cases match, no action at all takes place. Cases and the default clause can occur in any order.
+  ```c
+  switch (expression) {
+    case const-expr: statements
+    case const-expr: statements
+    default: statements
+  }
+  ```
 
 05. pointers and arrays
   - The address operator `&` only applies to objects in memory: **variables** and **array elements**. It cannot be applied to expressions, constants, or `register` variables.
