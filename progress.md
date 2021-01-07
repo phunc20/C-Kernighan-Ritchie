@@ -23,3 +23,4 @@
 - 1-16: Dunno what it means
 - 1-20 ~ 1-24: Skipped due to temporary lack of time
 - 2-7 ~ 2-8
+- `shellsort` p.62 (Write a test for it as well as understand it)
