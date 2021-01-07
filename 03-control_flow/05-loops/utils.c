@@ -37,3 +37,42 @@ void reverse(char s[]) {
 	}
 }
 
+void expand(char s1[], char s2[]) {
+	int i,j; // i, j indices of s1, s2, resp.
+	char left, right; // characters left and right to hyphen
+	int k;
+	char c;
+	//for (i=0, j=0; s1[i]!='\0'; i++) {
+	for (i=0, j=0; s1[i]!='\0';) {
+		if (s1[i] == '-') {
+			if (i <= 0 || !isalnum(s1[i-1]))
+			  s2[j++] = s1[i++];
+			else {
+				left = s1[i-1];
+				right = s1[i+1];
+				//if (isdigit(left) && isdigit(right)) {
+				if ((isdigit(left) && isdigit(right)) || (islower(left) && islower(right)) || (isupper(left) && isupper(right))) {
+					for (c=left+1; c<=right; c++)
+						s2[j++] = c;
+					i += 2;
+				}
+				//else if (islower(left) && islower(right)) {
+				//	for (c=left+1; c<=right; c++)
+				//		s2[j++] = c;
+				//}
+				//else if (isupper(left) && isupper(right)) {
+				//	for (c=left+1; c<=right; c++)
+				//		s2[j++] = c;
+				//}
+				else {
+			    s2[j++] = s1[i++];
+			    s2[j++] = s1[i++];
+				}
+			}
+		}
+		else {
+			s2[j++] = s1[i++];
+		}
+	}
+	s2[j] = '\0';
+}
