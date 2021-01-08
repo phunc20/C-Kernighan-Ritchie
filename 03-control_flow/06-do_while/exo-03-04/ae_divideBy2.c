@@ -7,7 +7,10 @@ int main(int argc, char **argv) {
 	printf("n = 1<<31;\n");
   printf("n = %d\n", n);
   printf("n/2 = %d\n", n/2);
-  printf("n>>1 = %d\n\n", n>>1);
+  printf("n>>1 = %d\n", n>>1);
+  printf("(110...0)_2 = %d\n", 0x3<<30);
+  printf("\n");
+
 	n = (1<<31) + 1;
 	printf("n = (1<<31) + 1;\n");
   printf("n = %d\n", n);
