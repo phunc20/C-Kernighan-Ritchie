@@ -106,7 +106,7 @@ Một hệ quả của cách chế này là
 \end{itemize}
 
 Due to the cyclic nature of the addition we just defined, khi mình có một \texttt{int a} và mình muốn tìm \texttt{-a}, mình sẽ tiến hành như sau:\\
-Nhắc lại $$(10\cdots0)_{2} \,(\textbf{một cái 1 và ba mươi hai cái 0}) = (0\cdots0)_{2} \,(\textbf{ba mươi hai cái 0}).$$
+Nhắc lại $$(1\overbrace{0\cdots0}^{\textrm{32 cái}})_{2} {}) = (\overbrace{0\cdots0}^{\textrm{32 cái}})_{2}.$$
 Để tìm được \texttt{b} sao cho \texttt{a} đi thêm \texttt{b} bước theo chỉ kim đồng hồ tới $(10\cdots0)_{2} = 0$, mình có thể
 \begin{itemize}
 	\item tìm trước \texttt{c} sao cho $\texttt{a + c} = (1\cdots1)_{2} = -1$. Việc này có thể đơn giản hoàn tất bằng cách đổi ngược từng bit trong \texttt{a}
