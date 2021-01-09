@@ -1,17 +1,49 @@
-%\documentclass{ctexart}
-%\setCJKmonofont{}
-
 \documentclass{article}
 \usepackage{tikz}
 \usepackage{graphicx}
-\usepackage{xeCJK}
-%\usepackage{fontspec}
-%\setmainfont{Noto Sans CJK SC}
+\usepackage{amsmath}
+\usepackage[utf8]{vietnam}
 
 %\usepackage{pgfplots}
 %\usepgfplotslibrary{polar}
 
 \begin{document}
+Trong bài này mình sẽ nói về cách cộng/trừ (\texttt{+}/\texttt{-}) \texttt{int}'s trong ngôn ngữ C. Cái mà được trình bài ở đây chỉ là những gì mình hình dung được, có thể có sai sốt; mình cũng đang trên đường học tập; nếu bạn đọc nào tìm ra những chỗ bị sai, có thể liên lạc với mình bằng email.
+
+\section{Cách biểu thị \texttt{int}}
+Để dễ cho việc thảo luận, mình sẽ coi \texttt{int} như luôn được lưu và xử lý trong máy tính bằng 32 bits. Hơn nữa, binary và decimal integers sẽ được biểu thị như, e.g. số bảy, $(111)_{2} = (0\cdots0111)_{2}$ và $7$, resp.
+
+Thử giả bộ chúng ta là những người đầu tiên chuẩn bị chế ra tiêu chuẩn cho \texttt{int}.
+Một cách tự nhiên, mình quy định $(0\cdots0)_{2} = 0, (0\cdots01)_{2} = 1, (0\cdots010)_{2} = 2, (0\cdots011)_{2} = 3$, etc. Cái này cho đến khi $(01\cdots1)_{2} = 2^{31} - 1$. Mình tạm dừng ở đây là tại vì (i) đến đây mình đã cho hết một nửa các con số 32-bit; (ii) mình còn chưa assign số âm nào hết.
+\subsection{Chế tậm bậy}
+Các con số 32-bit còn lại, thật ra mình cũng có quyền chế tùy ý. Ví dụ như, 
+$$-1 = (10\cdots01)_{2}, -2 = (10\cdots010)_{2},\;\ldots, -(2^{31} - 1) = (1\cdots1)_{2}.$$
+
+Và cái con số 32-bit cuối cùng sao cũng được:
+$$(10\cdots0)_{2} = 2^{31} \;\textrm{hoặc}\; (10\cdots0)_{2} = -2^{31}.$$
+
+\subsection{Chế đằng hoàng}
+Thật ra, không có ai bắt con người mình chế tiêu chuẩn cho \texttt{int} nhất quyết phải như thế nào cả. Điều quan trọng ở đây là \textit{một tiêu chuẩn được chế ra và sử dụng rộng rãi vì sự thuận thiện nó măng lại}.
+
+Cái tiêu chuẩn mà mình chế đại ở section trước, nó \textbf{tiện ở chỗ} là dễ nhận ra con số đó là bao nhiêu (tại vì số dương và số âm chẳng khác gì ngoài bit đầu tiên). Nhưng mà nó lại \textbf{bất tiện ở chỗ}, chẳng hạn như $(-1) + 1$ sẽ là
+$$(10\cdots01)_{2} + (0\cdots01)_{2}.$$
+Rất khó để giải thích tại sao cái này tính ra $(0\cdots0)_{2}$.
+
+Cái tiêu chuẩn những người đi trước mình chế ra, đó là
+\begin{equation*}
+\begin{split}
+	&(10\cdots0)_{2} = -2^{31}, (10\cdots01)_{2} = -2^{31} + 1, (10\cdots010)_{2} = -2^{31} + 2, \;\ldots, \\
+	&(1\cdots101)_{2} = -3, (1\cdots10)_{2} = -2, (1\cdots1)_{2} = -1.
+\end{split}
+\end{equation*}
+Theo mình cách chế này \textbf{được cái tiện ở chỗ} cách cộng được tự nhiên và như \emph{group} trong toán học. Ví dụ:
+\begin{itemize}
+	\item $(10\cdots0001)_{2} + (00\cdots0011)_{2} = (10\cdots0100)_{2} = -2^{31} + 4$ on one side, and $(-2^{31} + 1) + 3 = -2^{31} + 4$ on the other;
+	\item $(1\cdots1)_{2} + (0\cdots01)_{2} = (10\cdots0)_{2} \,(\textrm{i.e. một cái 1 và ba mươi hai cái 0}) = (0\cdots0)_{2} \,(\textrm{i.e. 32 cái 0})$ ở một phía, và $(-2^{31} + 1) + 1 = 0$ ở phía còn lại.
+\end{itemize}
+
+
+
 \thispagestyle{empty}
 \begin{figure}
   \centering
@@ -56,7 +88,7 @@
 
   \end{tikzpicture}
 	\vspace{1cm}
-	\caption{任意兩個整數相加可以看作類似角度上的相加, 角度從$0$算起}
+	\caption{Để cùng hai \texttt{int}'s trong C, chúng ta có thẻ coi như đi bao nhiêu bước trên hình tròn như trong hình.}
 	%\caption{In C, the addition of any two \texttt{signed int} (here for example $8\,$-bit) is nothing more than a compound clockwise rotation along the circle}
   %\label{int_circle}
 \end{figure}
