@@ -6,5 +6,6 @@ int main(int argc, char **argv) {
   int a = ~0;
   int b = 2;
   int sum = a + b;
+  printf("%d\n", sum);
   return 0;
 }

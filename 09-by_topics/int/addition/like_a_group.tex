@@ -16,22 +16,22 @@
 
 \begin{document}
 \maketitle
-Trong bài này mình sẽ nói về cách cộng/trừ (\texttt{+}/\texttt{-}) \texttt{int}'s trong ngôn ngữ C. Cái mà được trình bài ở đây chỉ là những gì mình hình dung được, có thể có sai sốt; mình cũng đang trên đường học tập; nếu bạn đọc nào tìm ra những chỗ bị sai, có thể liên lạc với mình bằng email.
+Trong bài này mình sẽ nói về cách cộng/trừ (\texttt{+}/\texttt{-}) \texttt{int}'s trong ngôn ngữ C. Cái mà được trình bài ở đây chỉ là những gì mình hình dung được, có thể có sai; mình cũng đang trên đường học tập; nếu bạn đọc nào tìm ra chỗ nào bị sai, có thể liên lạc với mình thông qua email.
 
 \section{Cách biểu thị \texttt{int}}
 Để dễ cho việc thảo luận, mình sẽ coi \texttt{int} như luôn được lưu và xử lý trong máy tính bằng 32 bits. Hơn nữa, binary và decimal integers sẽ được biểu thị như, e.g. số bảy, $(111)_{2} = (\overbrace{0\cdots0111}^{\textrm{32 bits}})_{2}$ và $7$, resp.
 
-Thử giả bộ chúng ta là những người đầu tiên chuẩn bị chế ra tiêu chuẩn cho \texttt{int}.
-Một cách tự nhiên, mình quy định $(\overbrace{0\cdots0}^{\textrm{32 bits}})_{2} = 0, (\overbrace{0\cdots01}^{\textrm{32 bits}})_{2} = 1, (\overbrace{0\cdots010}^{\textrm{32 bits}})_{2} = 2, (\overbrace{0\cdots011}^{\textrm{32 bits}})_{2} = 3$, etc. Cái này cho đến khi $(\overbrace{01\cdots1}^{\textrm{32 bits}})_{2} = 2^{31} - 1$. Mình tạm dừng ở đây là tại vì (\romannumeral 1) đến đây mình đã cho hết một nửa các con số 32-bit; (\romannumeral 2) mình còn chưa assign số âm nào hết.
-\subsection{Chế tậm bậy}
+Cho rằng chúng ta là những người đầu tiên chuẩn bị đặt ra tiêu chuẩn cho \texttt{int}.
+Một cách tự nhiên, mình sẽ có xu hướng định nghĩa binary như sau: $(\overbrace{0\cdots0}^{\textrm{32 bits}})_{2} = 0,\; (\overbrace{0\cdots01}^{\textrm{32 bits}})_{2} = 1,\; (\overbrace{0\cdots010}^{\textrm{32 bits}})_{2} = 2,\; (\overbrace{0\cdots011}^{\textrm{32 bits}})_{2} = 3,\, \ldots$ cho đến $(\overbrace{01\cdots1}^{\textrm{32 bits}})_{2} = 2^{31} - 1$. Mình tạm dừng ở đây là tại vì (\romannumeral 1) đến đây mình đã cho hết một nửa của tập con số 32-bit; (\romannumeral 2) mình còn chưa assign số âm nào hết.
+\subsection{Đặt tầm bậy}
 Các con số 32-bit còn lại, thật ra mình cũng có quyền chế tùy ý. Ví dụ như, 
 $$-1 = (\overbrace{10\cdots01}^{\textrm{32 bits}})_{2}, -2 = (\overbrace{10\cdots010}^{\textrm{32 bits}})_{2},\;\ldots, -(2^{31} - 1) = (\overbrace{1\cdots1}^{\textrm{32 bits}})_{2}.$$
 
 Và cái con số 32-bit cuối cùng sao cũng được:
 $$(\overbrace{10\cdots0}^{\textrm{32 bits}})_{2} = 2^{31} \;\textrm{hoặc}\; (\overbrace{10\cdots0}^{\textrm{32 bits}})_{2} = -2^{31}.$$
 
-\subsection{Chế đằng hoàng}
-Thật ra, không có ai bắt con người mình chế tiêu chuẩn cho \texttt{int} nhất quyết phải như thế nào cả. Điều quan trọng ở đây là \textit{một tiêu chuẩn được chế ra và sử dụng rộng rãi vì sự thuận thiện nó măng lại}.
+\subsection{Đặt đàng hoàng}
+Thật ra không có luật nào bắt chúng ta phải đặt tiêu chuẩn cho \texttt{int} theo dàng gì cả. Điều quan trọng ở đây là \textit{một tiêu chuẩn được đặt ra và sử dụng rộng rãi vì sự thuận thiện nó mang lại}.
 \vfil \break
 
 Cái tiêu chuẩn mà mình chế đại ở section trước, nó \textbf{tiện ở chỗ} là dễ nhận ra con số đó là bao nhiêu (tại vì số dương và số âm chẳng khác gì ngoài bit đầu tiên). Nhưng mà nó lại \textbf{bất tiện ở chỗ}, chẳng hạn như $(-1) + 1$ sẽ là
@@ -98,7 +98,7 @@ Cái cách cộng hai \texttt{int}'s trong hệ thổng này giống Hình 1 ở
 
   \end{tikzpicture}
 	\vspace{1cm}
-	\caption{Để cộng hai \texttt{int}'s trong C, chúng ta có thẻ coi như đi bao nhiêu bước trên hình tròn như trong hình.}
+	\caption{Để cộng hai \texttt{int}'s trong C, chúng ta có thể coi như đi bao nhiêu bước trên hình tròn như trong hình.}
 	%\caption{In C, the addition of any two \texttt{signed int} (here for example $8\,$-bit) is nothing more than a compound clockwise rotation along the circle}
   %\label{int_circle}
 \end{figure}
@@ -112,7 +112,7 @@ Một hệ quả của cách chế này là
 
 Due to the cyclic nature of the addition we just defined, khi mình có một \texttt{int a} và mình muốn tìm \texttt{-a}, mình sẽ tiến hành như sau:\\
 Nhắc lại $$(\overbrace{10\cdots0}^{\textrm{33 bits}})_{2} = (\overbrace{0\cdots0}^{\textrm{32 bits}})_{2} = 0.$$
-Để tìm được \texttt{b} sao cho \texttt{a} đi thêm \texttt{b} bước theo chỉ kim đồng hồ tới $(\overbrace{10\cdots0}^{\textrm{32 bits}})_{2} = 0$, mình có thể
+Để tìm được \texttt{b} sao cho \texttt{a} đi thêm \texttt{b} bước theo chiều kim đồng hồ tới $(\overbrace{10\cdots0}^{\textrm{32 bits}})_{2} = 0$, mình có thể
 \begin{itemize}
 	\item tìm trước \texttt{c} sao cho $\texttt{a + c} = \bits{1\cdots1}{32} = -1$. Việc này có thể đơn giản hoàn tất bằng cách đổi ngược từng bit trong \texttt{a}
 	%\item tìm trước \texttt{c} sao cho $\texttt{a + c} = (1\cdots1)_{2} = -1$. Việc này có thể đơn giản hoàn tất bằng cách đổi ngược từng bit trong \texttt{a}
@@ -123,7 +123,7 @@ Nhắc lại $$(\overbrace{10\cdots0}^{\textrm{33 bits}})_{2} = (\overbrace{0\cd
 Bài này đến đây đã hơi hơi bị dài, nếu các bạn đọc cảm thấy hứng thú, sau đây là một vài hướng các bạn có thể tự suy nghĩ tiếp:
 \begin{enumerate}
 	\item chứng minh cách cộng này là \emph{commutative} và \emph{associative}
-	\item $\texttt{a - b} := \texttt{a + (-b)}$ theo đúng sense mình hay nghĩ về cách trừ giữa \texttt{int}'s. (Hint: It might be easier to think of this geometrically: rotating the angle of \texttt{-b} \textbf{clockwise} is equiv. to rotating \textbf{counter-clockwise} the angle of \texttt{b})
+	\item $\texttt{a - b} := \texttt{a + (-b)}$ theo đúng sense mình hay nghĩ về cách trừ giữa \texttt{int}'s. (Hint: It might be easier to think of this geometrically: Rotating the angle of \texttt{-b} \textbf{clockwise} is equiv. to rotating \textbf{counter-clockwise} the angle of \texttt{b})
 \end{enumerate}
 
 \end{document}
