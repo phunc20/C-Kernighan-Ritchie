@@ -1,4 +1,8 @@
 \documentclass{article}
+
+\author{phunc20}
+\title{Integer Addition in C}
+
 \usepackage{tikz}
 \usepackage{graphicx}
 \usepackage{amsmath}
@@ -8,6 +12,7 @@
 %\usepgfplotslibrary{polar}
 
 \begin{document}
+\maketitle
 Trong bài này mình sẽ nói về cách cộng/trừ (\texttt{+}/\texttt{-}) \texttt{int}'s trong ngôn ngữ C. Cái mà được trình bài ở đây chỉ là những gì mình hình dung được, có thể có sai sốt; mình cũng đang trên đường học tập; nếu bạn đọc nào tìm ra những chỗ bị sai, có thể liên lạc với mình bằng email.
 
 \section{Cách biểu thị \texttt{int}}
@@ -21,6 +26,7 @@ $$-1 = (10\cdots01)_{2}, -2 = (10\cdots010)_{2},\;\ldots, -(2^{31} - 1) = (1\cdo
 
 Và cái con số 32-bit cuối cùng sao cũng được:
 $$(10\cdots0)_{2} = 2^{31} \;\textrm{hoặc}\; (10\cdots0)_{2} = -2^{31}.$$
+\vfil \break
 
 \subsection{Chế đằng hoàng}
 Thật ra, không có ai bắt con người mình chế tiêu chuẩn cho \texttt{int} nhất quyết phải như thế nào cả. Điều quan trọng ở đây là \textit{một tiêu chuẩn được chế ra và sử dụng rộng rãi vì sự thuận thiện nó măng lại}.
@@ -91,7 +97,6 @@ Cái cách cộng hai \texttt{int}'s trong hệ thổng này giống Hình 1 ở
 	%\caption{In C, the addition of any two \texttt{signed int} (here for example $8\,$-bit) is nothing more than a compound clockwise rotation along the circle}
   %\label{int_circle}
 \end{figure}
-\vfil \break
 
 
 Một hệ quả của cách chế này là
