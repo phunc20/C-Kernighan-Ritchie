@@ -14,7 +14,7 @@ Trong bài này mình sẽ nói về cách cộng/trừ (\texttt{+}/\texttt{-}) 
 Để dễ cho việc thảo luận, mình sẽ coi \texttt{int} như luôn được lưu và xử lý trong máy tính bằng 32 bits. Hơn nữa, binary và decimal integers sẽ được biểu thị như, e.g. số bảy, $(111)_{2} = (0\cdots0111)_{2}$ và $7$, resp.
 
 Thử giả bộ chúng ta là những người đầu tiên chuẩn bị chế ra tiêu chuẩn cho \texttt{int}.
-Một cách tự nhiên, mình quy định $(0\cdots0)_{2} = 0, (0\cdots01)_{2} = 1, (0\cdots010)_{2} = 2, (0\cdots011)_{2} = 3$, etc. Cái này cho đến khi $(01\cdots1)_{2} = 2^{31} - 1$. Mình tạm dừng ở đây là tại vì (i) đến đây mình đã cho hết một nửa các con số 32-bit; (ii) mình còn chưa assign số âm nào hết.
+Một cách tự nhiên, mình quy định $(0\cdots0)_{2} = 0, (0\cdots01)_{2} = 1, (0\cdots010)_{2} = 2, (0\cdots011)_{2} = 3$, etc. Cái này cho đến khi $(01\cdots1)_{2} = 2^{31} - 1$. Mình tạm dừng ở đây là tại vì (\romannumeral 1) đến đây mình đã cho hết một nửa các con số 32-bit; (\romannumeral 2) mình còn chưa assign số âm nào hết.
 \subsection{Chế tậm bậy}
 Các con số 32-bit còn lại, thật ra mình cũng có quyền chế tùy ý. Ví dụ như, 
 $$-1 = (10\cdots01)_{2}, -2 = (10\cdots010)_{2},\;\ldots, -(2^{31} - 1) = (1\cdots1)_{2}.$$
@@ -39,13 +39,12 @@ Cái tiêu chuẩn những người đi trước mình chế ra, đó là
 Theo mình cách chế này \textbf{được cái tiện ở chỗ} cách cộng được tự nhiên và như \emph{group} trong toán học. Ví dụ:
 \begin{itemize}
 	\item $(10\cdots0001)_{2} + (00\cdots0011)_{2} = (10\cdots0100)_{2} = -2^{31} + 4$ on one side, and $(-2^{31} + 1) + 3 = -2^{31} + 4$ on the other;
-	\item $(1\cdots1)_{2} + (0\cdots01)_{2} = (10\cdots0)_{2} \,(\textrm{i.e. một cái 1 và ba mươi hai cái 0}) = (0\cdots0)_{2} \,(\textrm{i.e. 32 cái 0})$ ở một phía, và $(-2^{31} + 1) + 1 = 0$ ở phía còn lại.
+	\item $(1\cdots1)_{2} + (0\cdots01)_{2} = (10\cdots0)_{2} \,(\textbf{một cái 1 và ba mươi hai cái 0}) = (0\cdots0)_{2} \,(\textbf{32 cái 0})$ ở một phía, và $(-2^{31} + 1) + 1 = 0$ ở phía còn lại.
 \end{itemize}
 
+Cái cách cộng hai \texttt{int}'s trong hệ thổng này giống Hình 1 ở dưới, khi tính \texttt{a + b} mình có thể đi từ \texttt{a} theo hướng kim đồng hồ số bước từ \textbf{số không} tới \texttt{b}; nếu cách cộng đó xoay hơn một vòng hình tròn thì mình tính lại từ đầu (i.e. từ \textbf{số không}). Các bạn đọc có thể lấy ba ví dụ hình dung trong đầu và verify có thật: (\romannumeral 1) cộng hai con số dương; (\romannumeral 2) một con số dương và một con số âm; (\romannumeral 3) hai con số âm.
 
-
-\thispagestyle{empty}
-\begin{figure}
+\begin{figure}[h!]
   \centering
   \begin{tikzpicture}
   	%\draw[->] (0,0) circle (5cm);  % -> doesn't work
@@ -88,8 +87,32 @@ Theo mình cách chế này \textbf{được cái tiện ở chỗ} cách cộng
 
   \end{tikzpicture}
 	\vspace{1cm}
-	\caption{Để cùng hai \texttt{int}'s trong C, chúng ta có thẻ coi như đi bao nhiêu bước trên hình tròn như trong hình.}
+	\caption{Để cộng hai \texttt{int}'s trong C, chúng ta có thẻ coi như đi bao nhiêu bước trên hình tròn như trong hình.}
 	%\caption{In C, the addition of any two \texttt{signed int} (here for example $8\,$-bit) is nothing more than a compound clockwise rotation along the circle}
   %\label{int_circle}
 \end{figure}
+\vfil \break
+
+
+Một hệ quả của cách chế này là
+\begin{itemize}
+	\item $(\textrm{bit bên tay trái nhất}=0) \implies$ số không âm (i.e. số dương hoặc số $0$) ;
+	\item $(\textrm{bit bên tay trái nhất}=1) \implies$ số âm.
+\end{itemize}
+
+Due to the cyclic nature of the addition we just defined, khi mình có một \texttt{int a} và mình muốn tìm \texttt{-a}, mình sẽ tiến hành như sau:\\
+Nhắc lại $$(10\cdots0)_{2} \,(\textbf{một cái 1 và ba mươi hai cái 0}) = (0\cdots0)_{2} \,(\textbf{ba mươi hai cái 0}).$$
+Để tìm được \texttt{b} sao cho \texttt{a} đi thêm \texttt{b} bước theo chỉ kim đồng hồ tới $(10\cdots0)_{2} = 0$, mình có thể
+\begin{itemize}
+	\item tìm trước \texttt{c} sao cho $\texttt{a + c} = (1\cdots1)_{2} = -1$. Việc này có thể đơn giản hoàn tất bằng cách đổi ngược từng bit trong \texttt{a}
+	\item rồi $\texttt{b} = \texttt{c} + 1$
+\end{itemize}
+%\thispagestyle{empty}
+
+Bài này đến đây đã hơi hơi bị dài, nếu các bạn đọc cảm thấy hứng thú, sau đây là một vài hướng các bạn có thể tự suy nghĩ tiếp:
+\begin{enumerate}
+	\item chứng minh cách cộng này là \emph{commutative} và \emph{associative}
+	\item $\texttt{a - b} := \texttt{a + (-b)}$ theo đúng sense mình hay nghĩ về cách trừ giữa \texttt{int}'s. (Hint: It might be easier to think of this geometrically: rotating the angle of \texttt{-b} \textbf{clockwise} is equiv. to rotating \textbf{counter-clockwise} the angle of \texttt{b})
+\end{enumerate}
+
 \end{document}
