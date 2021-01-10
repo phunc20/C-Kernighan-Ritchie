@@ -85,6 +85,9 @@
   ```
   - `for (i=0; expr; ++i)`. When exiting a for loop like this, `i` will retain its last value when still inside the loop.
 
+04. functions and program structure
+  - If the return type of a function is omitted, `int` is assumed.
+  - A function's `return expr` will be converted to the return type of the function if necessary.
 05. pointers and arrays
   - The address operator `&` only applies to objects in memory: **variables** and **array elements**. It cannot be applied to expressions, constants, or `register` variables.
   - A pointer is constrained to point to a particular kind of object: every pointer points to a specific data type. (There is one exception: a "pointer to `void`" is used to hold any type of pointer but cannot dereferenced by itself. (cf. more on this in Section 5.11.)
@@ -94,6 +97,8 @@
     - The expressions `pa = a` and `pa++` are legal;
     - The expressions `a = pa` and `a++` are legal;
     - `a` is regarded as an **array name** whereas `pa` a **variable**
+  - The design of `alloc` and of `afree` is a stack, or a last-in, first-out list. That is, when we allocation some `a` and then some `b`, if we want to deallocate `a` at this moment, we must first `afree(b)` before we can `afree(a)`.
+    - `malloc` and `free` in the standard library have no such restrictions.
 
 
 ## Not quote but

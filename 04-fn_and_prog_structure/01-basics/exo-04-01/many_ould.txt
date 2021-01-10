@@ -1,0 +1,3 @@
+would should could
+wouldn't shouldn't couldn't
+This line shou* contains no ou*d
