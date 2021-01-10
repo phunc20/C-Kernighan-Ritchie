@@ -19,7 +19,8 @@
 - Stopped at Section 3.5     p.61  (2021/01/06 22h00)
 - Stopped at Section 3.6     p.63  (2021/01/07 13h30)
 - Stopped at Section 4.1     p.67  (2021/01/07 15h30)
-- Stopped at Section 4.2     p.71  (2021/01/07 15h30)
+- Stopped at Section 4.2     p.71  (2021/01/10 15h30)
+- Stopped at Section 5.2     p.95  (2021/01/10 22h03) (i.e. ch5 done sec5.1)
 
 
 ## Skipped exercises

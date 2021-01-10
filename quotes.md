@@ -89,8 +89,24 @@
   - If the return type of a function is omitted, `int` is assumed.
   - A function's `return expr` will be converted to the return type of the function if necessary.
 05. pointers and arrays
+  - A pointer is a variable that contains the address of another variable.
+  - `void *`, a generic pointer
+  - The `&` operator only applies to objects in memory: variables and array elements. It cannot be applied to expressions, constants, or `register` variables.
+  - The unary operator `*` is called the _indirection_ or _dereferencing_ operator; when applied to a pointer, it accesses the object the pointer points to.
   - The address operator `&` only applies to objects in memory: **variables** and **array elements**. It cannot be applied to expressions, constants, or `register` variables.
+  ```c
+  int x = 1, y = 2, z[10];
+  int *ip;       /* ip is a pointer to int */
+
+  ip = &x;       /* ip now points to x */
+  y = *ip;       /* y is now 1 */
+  *ip = 0;       /* x is now 0 */
+  ip = &z[7];    /* ip now points to z[7] */
+  ```
+  - The way `int *ip` is written is intended to be mnemonic; it says that the expression `*ip` is an `int`.
   - A pointer is constrained to point to a particular kind of object: every pointer points to a specific data type. (There is one exception: a "pointer to `void`" is used to hold any type of pointer but cannot dereferenced by itself. (cf. more on this in Section 5.11.)
+  - If `ip` points to some integer `x`, then `*ip = *ip + 10` has the same effect as `x = x + 10`.
+  - `*ip += 1`, `++*ip` and `(*ip)++` all mean the same thing: Increment the object that `ip` points to by `1`.
   - If `a` is some array (regardless of its data type), and if `pa` is a pointer to some element of `a`, say to `a[0]`, then `pa + 1` will be a pointer to `a[1]`, `pa+i` a pointer to `a[i]`.
   - In evaluating `a[i]`, where `a` is some array, C converts it to `*(a+i)`. As the other side of this coin, if `a` is some array and if `pa` points to `a[0]`, then `pa[i]` is the same as `a[i]` and as `*(pa+i)`.
   - **Caveat**: Say, `a` is some array and `pa` a variable, then

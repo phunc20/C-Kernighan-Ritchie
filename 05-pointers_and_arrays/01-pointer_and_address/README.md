@@ -1,3 +1,19 @@
+## Why the authors said that
+In `(*ip)++` the parentheses are necessary (and unary operators like `*` and `++` associates from right to left, blah, blah, blah)?
+
+Witness it by yourself.
+```bash
+~/.../C-Kernighan-Ritchie/05-pointers_and_arrays/01-pointer_and_address ❯❯❯ gcc ab_rightToLeft.c
+~/.../C-Kernighan-Ritchie/05-pointers_and_arrays/01-pointer_and_address ❯❯❯ ./a.out
+int a = 10;
+int ip = &a = 0x7fff21cae13c
+(*ip)-- = 10(%d)
+*ip-- = 9(%d)
+(*ip)-- = 1472524384(%d)
+~/.../C-Kernighan-Ritchie/05-pointers_and_arrays/01-pointer_and_address ❯❯❯
+```
+
+
 ## length of an array
 ```bash
 ~/.../C-Kernighan-Ritchie/05-pointers_and_arrays/01-pointer_and_address ❯❯❯ gcc 04_length.c
