@@ -19,6 +19,7 @@
 - Stopped at Section 3.5     p.61  (2021/01/06 22h00)
 - Stopped at Section 3.6     p.63  (2021/01/07 13h30)
 - Stopped at Section 4.1     p.67  (2021/01/07 15h30)
+- Stopped at Section 4.2     p.71  (2021/01/07 15h30)
 
 
 ## Skipped exercises
@@ -26,3 +27,4 @@
 - 1-20 ~ 1-24: Skipped due to temporary lack of time
 - 2-7 ~ 2-8
 - `shellsort` p.62 (Write a test for it as well as understand it)
+- 3-5, 3-6
