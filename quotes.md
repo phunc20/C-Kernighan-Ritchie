@@ -88,6 +88,25 @@
 04. functions and program structure
   - If the return type of a function is omitted, `int` is assumed.
   - A function's `return expr` will be converted to the return type of the function if necessary.
+  - function declaration: If a function takes no arguments, declare it
+    - best with **`double my_super_fn(void);`**, say the return type is `double`
+    - worse with `double my_super_fn();`, i.e. nothing
+  - Some compiler, when compile the following, will warn of losing info during implicit type conversion
+  ```c
+  /* atoi: convert string s to integer using atof */
+  int atoi(char s[]) {
+    double atof(char s[]);
+    return atof(s);
+  }
+  ```
+  One way to suppress the warning is to explicitly cast it:
+  ```c
+  /* atoi: convert string s to integer using atof */
+  int atoi(char s[]) {
+    double atof(char s[]);
+    return (int) atof(s);
+  }
+  ```
 05. pointers and arrays
   - A pointer is a variable that contains the address of another variable.
   - `void *`, a generic pointer
