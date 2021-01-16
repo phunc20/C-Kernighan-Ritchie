@@ -107,6 +107,13 @@
     return (int) atof(s);
   }
   ```
+  - **external** and **internal**
+    - The term "**internal**" is used to describe things **inside** a function such as the arguments, declared variables, etc.
+    - Common **external** objects are variables and functions.
+    - A C program consists of a set of external objects.
+    - <s>C does not allow any function to be defined inside any other function.</s> (Unlike Python, Scala, Julia)
+  - diff functions can use the same external variable(s) to communicate data btw them
+  - Reverse Polish notation [selon Computerphile](https://www.youtube.com/watch?v=7ha78yWRDlE&t=1s)
 05. pointers and arrays
   - A pointer is a variable that contains the address of another variable.
   - `void *`, a generic pointer
