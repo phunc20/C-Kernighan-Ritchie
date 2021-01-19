@@ -114,6 +114,7 @@
     - <s>C does not allow any function to be defined inside any other function.</s> (Unlike Python, Scala, Julia)
   - diff functions can use the same external variable(s) to communicate data btw them
   - Reverse Polish notation [selon Computerphile](https://www.youtube.com/watch?v=7ha78yWRDlE&t=1s)
+  - L'ecriture `push(pop() - pop())` (stack; reverse Polish notation) is problematic, because the order in which the two calls of `pop` are evaluated is **not defined**.
 05. pointers and arrays
   - A pointer is a variable that contains the address of another variable.
   - `void *`, a generic pointer
