@@ -22,6 +22,7 @@
 - Stopped at Section 4.2     p.71  (2021/01/10 15h30)
 - Stopped at Section 4.3     p.74  (2021/01/11 23h30)
 - Stopped at Section 5.2     p.95  (2021/01/10 22h03) (i.e. ch5 done sec5.1)
+- Stopped at Section 5.2     p.97  (2021/01/26 00h03) (til `getint`'s code)
 
 
 ## Skipped exercises
