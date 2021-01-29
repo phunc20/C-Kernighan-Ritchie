@@ -23,6 +23,7 @@
 - Stopped at Section 4.3     p.74  (2021/01/11 23h30)
 - Stopped at Section 5.2     p.95  (2021/01/10 22h03) (i.e. ch5 done sec5.1)
 - Stopped at Section 5.2     p.97  (2021/01/26 00h03) (til `getint`'s code)
+- Stopped at Section 5.3     p.97  (2021/01/29 17h23)
 
 
 ## Skipped exercises
@@ -32,3 +33,4 @@
 - `shellsort` p.62 (Write a test for it as well as understand it)
 - 3-5, 3-6
 - 4-2
+- 5-1, 5-2
