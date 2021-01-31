@@ -142,7 +142,17 @@
     - `a` is regarded as an **array name** whereas `pa` a **variable**
   - The design of `alloc` and of `afree` is a stack, or a last-in, first-out list. That is, when we allocation some `a` and then some `b`, if we want to deallocate `a` at this moment, we must first `afree(b)` before we can `afree(a)`.
     - `malloc` and `free` in the standard library have no such restrictions.
-
+  - Doing things in terms of pointers is generally faster than in terms of arrays.
+  - A few terminologies:
+    - `pa + i` points **`i` elements after `pa`**, also called **the `i`-th element beyond `pa`**
+    - `pa - i` points **`i` elements before `pa`**
+  - `pa = &a[0]` (where `a` is an array, `pa` a pointer) implies that
+    - `pa` and `a` contain **the same value**, which is the address of element zero of the array.
+    - `pa = &a[0]` is thus equiv. to `pa = a`
+    - **`*(a+i)`** is thus equiv. to `a[i]`
+    - As the other side of this coin, `pa[i]` is equiv. to `*(pa + i)`
+      - Don't be too surprised: This is really like "`a[i]` is equiv. to `*(a + i)`"; after all, `a` is equiv. to `&a[0]`.
+  - There is one diff btw an array and a pointer that must be kept in mind. A pointer is a variable, so `pa=a` and `pa++` are legal. But an array name is **not a variable**; constructions like `a=pa` and `a++` are illegal.
 
 ## Not quote but
 - After each of `if`, `for`, `while`, etc. can be
