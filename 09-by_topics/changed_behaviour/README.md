@@ -70,7 +70,28 @@ int main(int argc, char **argv) {
 ```
 
 
+## `gcc` and other C compilers
+There is one friend who said that the above behaviours are compiler-independent. More precisely,
+he said that what was said above was only valid under `gcc`.
 
+I haven't tried on a machine equipped with other compilers than `gcc`, but do note that
+on some Linux machines/distros, e.g. 32-bit Parabola, `cc` is just a symlink to `gcc`.
+```bash
+[phunc20@tako-x60 changed_behaviour]$ cc func_as_arg.c -lm
+[phunc20@tako-x60 changed_behaviour]$ ./a.out
+derivative(1, f) = 4.000002
+derivative(2, f) = 8.000002
+derivative(4, f) = 16.000002
+
+derivative(1, exp) = 2.718283
+derivative(0, exp) = 1.000000
+derivative(-1, exp) = 0.367880
+[phunc20@tako-x60 changed_behaviour]$ which cc
+/usr/bin/cc
+[phunc20@tako-x60 changed_behaviour]$ ll $(which cc)
+lrwxrwxrwx 1 root root 3 Oct  2 01:31 /usr/bin/cc -> gcc
+[phunc20@tako-x60 changed_behaviour]$
+```
 
 
 
