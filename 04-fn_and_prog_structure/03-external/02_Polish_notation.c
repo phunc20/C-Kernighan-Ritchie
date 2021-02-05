@@ -16,6 +16,7 @@ int main(int argc, char **argv) {
   char s[MAXOP];
 
   while ((type = getop(s)) != EOF) {
+    //printf("s = %s\n", s);
     switch (type) {
       case NUMBER:
         push(atof(s));
@@ -81,7 +82,6 @@ int getop(char s[]) {
   while ((s[0] = c = getch()) == ' ' || c == '\t')
     ;
   s[1] = '\0'; // Why?
-
 
   /* We are probably allowing numbers of the forms:
    *   "312.1234"
