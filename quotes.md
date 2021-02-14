@@ -116,6 +116,21 @@
   - Reverse Polish notation [selon Computerphile](https://www.youtube.com/watch?v=7ha78yWRDlE&t=1s)
   - L'ecriture `push(pop() - pop())` (stack; reverse Polish notation) is problematic, because the order in which the two calls of `pop` are evaluated is **not defined**.
   - Array sizes must be specified with the definition, but are optional with an `extern` declaration, e.g. `extern double val[]`.
+  - Unless initialized otherwise,
+    - external and staticc variables are guaranteed to be initialized to zero
+    - automatic and register variables have undefined (i.e. garbage) initial values (cf. p.85, sec. 4-9)
+  - Initialization can also be like **`long n_ms = 1000L * 60L * 60L * 24L /* milliseconds/day */`**
+  - For external and static variables, the initializer must be a constant expression.
+    - In `int i = 10;` and in `long n_ms = 1000L * 60L * 60L * 24L`, `10` and `1000L * 60L * 60L * 24L` are known as **initializers**.
+    - For example, `1000L * 60L * 60L * 24L` above is an example of a constant expression.
+  - For automatic and register variables, the initializer is not restricted to being a constant expression: it may be any expression involving previously defined values, even function calls.
+  - An array may be initialized by following its declaration with a list of initializers **enclosed in braces** and **separated by commas.** For example, to initialize an array `days` with the number of days in each month
+    ```c
+    int days[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    ```
+  - Character arrays have more than one way of initialization:
+    - **`char pattern[] = "ould";`** is a shorhand for the longer but equivalent **`char pattern[] = {'o', 'u', 'l', 'd', '\0'}`**
+    - Note that the character array size above is **`5`** (four character plus the terminating `'\0'`).
 05. pointers and arrays
   - A pointer is a variable that contains the address of another variable.
   - `void *`, a generic pointer
