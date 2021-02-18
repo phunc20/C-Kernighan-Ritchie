@@ -24,6 +24,7 @@
   - Finish reading Section 4.3, but the reverse Polish notation code not working yet.
 - Stopped at Section 4.5     p.81   (2021/02/05 13h30)
 - Stopped at Section 4.10    p.86   (2021/02/14 23h00)
+- Stopped at Section 4.11    p.88   (2021/02/18 15h00)
 - Stopped at Section 5.2     p.95   (2021/01/10 22h03) (i.e. ch5 done sec5.1)
 - Stopped at Section 5.2     p.97   (2021/01/26 00h03) (til `getint`'s code)
 - Stopped at Section 5.3     p.97   (2021/01/29 17h23)
