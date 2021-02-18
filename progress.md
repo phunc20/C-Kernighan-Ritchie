@@ -38,7 +38,9 @@
 - 3-5, 3-6
 - 4-2
 - 4-3 ~ 4-10
+  - 4-10: questions on `pow()`
 - 4-11
+- 4-12, 4-13 (You can solve these.)
 - 5-1, 5-2
 
 ## Todos
